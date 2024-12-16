@@ -1,45 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { getExchangeRates } from '..//../service/service.Api';
+import React, { useState } from 'react';
+import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
+import TransactionForm from '../TransactionForm/TransactionForm';
+import TransactionList from '../TransactionList/TransactionList';
+import FinanceChart from '../FinanceChart/FinanceChart';
 
 const Main = () => {
-  const [rates, setRates] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [transactions, setTransactions] = useState([]);
 
-  useEffect(() => {
-    const fetchRates = async () => {
-      try {
-        const ratesData = await getExchangeRates('AED'); 
-        setRates(ratesData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Valyuta kurslarini olishda xatolik:', error);
-      }
-    };
-
-    fetchRates();
-  }, []);
-
-  if (loading) return <p>Yuklanmoqda...</p>;
+  const addTransaction = (transaction) => {
+    setTransactions([...transactions, transaction]);
+  };
 
   return (
-    <div>
-      <h2>Valyuta kurslari</h2>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Valyuta</th>
-            <th>Kurs</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(rates).map(([currency, rate]) => (
-            <tr key={currency}>
-              <td>{currency}</td>
-              <td>{rate.toFixed(2)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mt-4">
+      <CurrencyConverter />
+      <div className="row mt-4">
+        <div className="col-md-6">
+          <TransactionForm addTransaction={addTransaction} />
+        </div>
+        <div className="col-md-6">
+          <TransactionList transactions={transactions} />
+        </div>
+      </div>
+      <FinanceChart transactions={transactions} />
     </div>
   );
 };
