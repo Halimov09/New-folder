@@ -2,7 +2,7 @@ import React from 'react';
 
 const TransactionList = ({ transactions }) => {
   return (
-    <div className="card shadow">
+    <div className="card shadow mt-4">
       <div className="card-header bg-primary text-white">
         <h5>Transaction List</h5>
       </div>

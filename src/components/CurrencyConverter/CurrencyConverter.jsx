@@ -35,9 +35,9 @@ const CurrencyConverter = () => {
   const displayedRates = showAll ? convertedRates : convertedRates.slice(0, 5);
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6 col-sm-12">
+    <div className="">
+      <div className="row ">
+        <div className="col-sm-12">
           <div className="card shadow">
             <div className="card-header text-center bg-primary text-white">
               <h3>Currency Converter</h3>
@@ -81,7 +81,7 @@ const CurrencyConverter = () => {
                 ))}
               </ul>
               {/* Qo'shimcha button */}
-              {convertedRates.length > 5 && (
+              {convertedRates.length > 1 && (
                 <div className="text-center mt-3">
                   <button
                     className="btn btn-outline-primary"
