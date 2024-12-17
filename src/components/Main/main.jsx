@@ -14,19 +14,11 @@ const Main = () => {
 
   return (
     <div>
-    <NavbarMenu/>
-    <div className="container mt-4">
-      <div className="row mt-4">
-        <div className="col-md-6">
-          <CurrencyConverter />
-        </div>
-        <div className="col-md-6">
+     <NavbarMenu/>  
+      <div className="container">
+        <CurrencyConverter />
         <TransactionForm addTransaction={addTransaction} />
-        </div>
       </div>
-      <TransactionList transactions={transactions} />
-      <FinanceChart transactions={transactions} />
-    </div>
     </div>
   );
 };
