@@ -36,7 +36,7 @@ const CurrencyConverter = () => {
 
   return (
     <div className="">
-      <div className="row ">
+      <div className="row mt-4">
         <div className="col-sm-12">
           <div className="card shadow">
             <div className="card-header text-center bg-primary text-white">
