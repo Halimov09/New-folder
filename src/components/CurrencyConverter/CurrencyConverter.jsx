@@ -7,6 +7,7 @@ const CurrencyConverter = () => {
   const [baseCurrency, setBaseCurrency] = useState('USD');
   const [amount, setAmount] = useState(1);
   const [convertedRates, setConvertedRates] = useState([]);
+  const [showAll, setShowAll] = useState(false); // Qo'shimcha state
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -29,6 +30,9 @@ const CurrencyConverter = () => {
     }));
     setConvertedRates(converted);
   };
+
+  // Kurslarni qisqartirish
+  const displayedRates = showAll ? convertedRates : convertedRates.slice(0, 5);
 
   return (
     <div className="container mt-5">
@@ -69,13 +73,24 @@ const CurrencyConverter = () => {
               </form>
               <h5 className="mt-4">Converted Rates</h5>
               <ul className="list-group">
-                {convertedRates.map((rate) => (
+                {displayedRates.map((rate) => (
                   <li key={rate.currency} className="list-group-item d-flex justify-content-between align-items-center">
                     {rate.currency}
                     <span className="badge bg-primary rounded-pill">{rate.value}</span>
                   </li>
                 ))}
               </ul>
+              {/* Qo'shimcha button */}
+              {convertedRates.length > 5 && (
+                <div className="text-center mt-3">
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={() => setShowAll(!showAll)}
+                  >
+                    {showAll ? 'Kamroq ko\'rsatish' : 'Ko\'proq ko\'rsatish'}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
