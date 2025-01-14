@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
 import TransactionForm from '../TransactionForm/TransactionForm';
-import TransactionList from '../TransactionList/TransactionList';
-import FinanceChart from '../FinanceChart/FinanceChart';
 import NavbarMenu from '../Navbar/Navbar';
 
 const Main = () => {
