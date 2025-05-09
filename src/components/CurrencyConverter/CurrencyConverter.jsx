@@ -7,7 +7,7 @@ const CurrencyConverter = () => {
   const [baseCurrency, setBaseCurrency] = useState('USD');
   const [amount, setAmount] = useState(1);
   const [convertedRates, setConvertedRates] = useState([]);
-  const [showAll, setShowAll] = useState(false); // Qo'shimcha state
+  // Qo'shimcha state
 
   useEffect(() => {
     const fetchRates = async () => {
